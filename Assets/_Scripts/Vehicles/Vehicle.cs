@@ -30,21 +30,27 @@ public class Vehicle : MonoBehaviour
     //Weapon
 
     //Vehicle Stats
-    public VehicleStat Speed;
-    public VehicleStat Acceleration;
-    public VehicleStat Handling;
-    public VehicleStat Offroad;
-    public VehicleStat Weight;
+    public VehicleStat Speed = new VehicleStat(3);
+    public VehicleStat Acceleration = new VehicleStat(3);
+    public VehicleStat Handling = new VehicleStat(3);
+    public VehicleStat Offroad = new VehicleStat(3);
+    public VehicleStat Weight = new VehicleStat(3);
 
 
 
     //These two values make up the ACCELERATION stat for a vehicle
-    public float maxAcceleration = 30.0f;
+    public float maxAcceleration => CalculateMaxAcceleration();
     public float brakeAcceleration = 50.0f;
 
     //These values are modified by the HANDLING stat of the vehicle
     public float turnSensitivity = 1.0f;
     public float maxSteerAngle = 30.0f;
+
+
+    float CalculateMaxAcceleration()
+    {
+        return Acceleration.Value * 50;
+    }
 
 
 

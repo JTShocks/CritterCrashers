@@ -15,18 +15,20 @@ public class VehicleStat
             _value = CalculateFinalValue();
             isDirty = false;
         }
+        Debug.Log(_value);
         return _value;
         }
     }
 
     private bool isDirty = true;
     private float _value;
-    private readonly List<StatModifier> statModifiers;
+    private readonly List<StatModifier> statModifiers = new();
 
     //Constructor for a given stat
     public VehicleStat(float baseValue)
     {
         BaseValue = baseValue;
+        
     }
 
     public void AddModifier(StatModifier mod)

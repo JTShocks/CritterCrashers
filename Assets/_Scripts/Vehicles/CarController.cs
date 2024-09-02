@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -16,11 +17,16 @@ public class CarController : MonoBehaviour
     public float DownForceValue = 50.0f;
 
     [SerializeField] private float KPH;
+
+    bool isGrounded;
+
+    float maxSpeed;
     
 
     void Awake()
     {
         carRb = GetComponent<Rigidbody>();
+        maxSpeed = 10 * vehicle.Speed.Value;
 
     }
     void Update()
@@ -44,6 +50,12 @@ public class CarController : MonoBehaviour
             wheel.wheelCollider.motorTorque = moveInput * vehicle.maxAcceleration;
         }
         KPH = carRb.velocity.magnitude * 3.6f;
+
+        if(carRb.velocity.magnitude > maxSpeed)
+        {
+            carRb.velocity = Vector3.ClampMagnitude(carRb.velocity, maxSpeed);
+        }
+        
     }
 
     public void Steer()

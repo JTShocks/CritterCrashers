@@ -30,11 +30,11 @@ public class Vehicle : MonoBehaviour
     //Weapon
 
     //Vehicle Stats
-    public VehicleStat Speed {get; private set;}
-    public VehicleStat Acceleration{get; private set;}
-    public VehicleStat Handling{get; private set;}
-    public VehicleStat Offroad{get; private set;}
-    public VehicleStat Weight{get; private set;}
+    public VehicleStat Speed;
+    public VehicleStat Acceleration;
+    public VehicleStat Handling;
+    public VehicleStat Offroad;
+    public VehicleStat Weight;
 
 
 

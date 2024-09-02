@@ -29,8 +29,9 @@ public class Vehicle : MonoBehaviour
     //Weapon
 
     //Vehicle Stats
+    public List<VehicleStat> Stats;
 
-    
+
 
     //These two values make up the ACCELERATION stat for a vehicle
     public float maxAcceleration = 30.0f;

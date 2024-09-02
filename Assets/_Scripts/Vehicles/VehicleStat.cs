@@ -7,7 +7,6 @@ using UnityEngine;
 public class VehicleStat
 {
     public float BaseValue;
-    [SerializeField] private StatType statType = null;
 
     public float Value {
     get{
@@ -25,10 +24,9 @@ public class VehicleStat
     private readonly List<StatModifier> statModifiers;
 
     //Constructor for a given stat
-    public VehicleStat(float baseValue, StatType type)
+    public VehicleStat(float baseValue)
     {
         BaseValue = baseValue;
-        statType = type;
     }
 
     public void AddModifier(StatModifier mod)

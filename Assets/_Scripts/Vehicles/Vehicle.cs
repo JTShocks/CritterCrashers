@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class Vehicle : MonoBehaviour
@@ -29,7 +30,11 @@ public class Vehicle : MonoBehaviour
     //Weapon
 
     //Vehicle Stats
-    public List<VehicleStat> Stats;
+    public VehicleStat Speed {get; private set;}
+    public VehicleStat Acceleration{get; private set;}
+    public VehicleStat Handling{get; private set;}
+    public VehicleStat Offroad{get; private set;}
+    public VehicleStat Weight{get; private set;}
 
 
 

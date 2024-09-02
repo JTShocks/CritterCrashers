@@ -1710,6 +1710,72 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7968971443140297912, guid: f82d3692c32018246ace5a7fb8a1c22b,
+        type: 3}
+      propertyPath: Stats.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7968971443140297912, guid: f82d3692c32018246ace5a7fb8a1c22b,
+        type: 3}
+      propertyPath: Stats.Array.data[0].statType
+      value: 
+      objectReference: {fileID: 11400000, guid: d806332f1b17e2748bd8cf5c3be68dda,
+        type: 2}
+    - target: {fileID: 7968971443140297912, guid: f82d3692c32018246ace5a7fb8a1c22b,
+        type: 3}
+      propertyPath: Stats.Array.data[1].statType
+      value: 
+      objectReference: {fileID: 11400000, guid: 043b89d12a13ebb418108223d44a497a,
+        type: 2}
+    - target: {fileID: 7968971443140297912, guid: f82d3692c32018246ace5a7fb8a1c22b,
+        type: 3}
+      propertyPath: Stats.Array.data[2].statType
+      value: 
+      objectReference: {fileID: 11400000, guid: ce48bef70231c0f4e92dac2e0bc14f04,
+        type: 2}
+    - target: {fileID: 7968971443140297912, guid: f82d3692c32018246ace5a7fb8a1c22b,
+        type: 3}
+      propertyPath: Stats.Array.data[3].statType
+      value: 
+      objectReference: {fileID: 11400000, guid: 1323bf7871c5d36478bc5131edc6db8a,
+        type: 2}
+    - target: {fileID: 7968971443140297912, guid: f82d3692c32018246ace5a7fb8a1c22b,
+        type: 3}
+      propertyPath: Stats.Array.data[4].statType
+      value: 
+      objectReference: {fileID: 11400000, guid: d806332f1b17e2748bd8cf5c3be68dda,
+        type: 2}
+    - target: {fileID: 7968971443140297912, guid: f82d3692c32018246ace5a7fb8a1c22b,
+        type: 3}
+      propertyPath: Stats.Array.data[5].statType
+      value: 
+      objectReference: {fileID: 11400000, guid: d806332f1b17e2748bd8cf5c3be68dda,
+        type: 2}
+    - target: {fileID: 7968971443140297912, guid: f82d3692c32018246ace5a7fb8a1c22b,
+        type: 3}
+      propertyPath: Stats.Array.data[0].BaseValue
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7968971443140297912, guid: f82d3692c32018246ace5a7fb8a1c22b,
+        type: 3}
+      propertyPath: Stats.Array.data[1].BaseValue
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7968971443140297912, guid: f82d3692c32018246ace5a7fb8a1c22b,
+        type: 3}
+      propertyPath: Stats.Array.data[2].BaseValue
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7968971443140297912, guid: f82d3692c32018246ace5a7fb8a1c22b,
+        type: 3}
+      propertyPath: Stats.Array.data[3].BaseValue
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7968971443140297912, guid: f82d3692c32018246ace5a7fb8a1c22b,
+        type: 3}
+      propertyPath: Stats.Array.data[4].BaseValue
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8599838480659084905, guid: f82d3692c32018246ace5a7fb8a1c22b,
         type: 3}
       propertyPath: m_LocalPosition.x

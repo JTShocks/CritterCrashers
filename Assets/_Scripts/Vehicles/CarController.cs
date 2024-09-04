@@ -17,16 +17,19 @@ public class CarController : MonoBehaviour
     public float DownForceValue = 50.0f;
 
     [SerializeField] private float KPH;
+    [SerializeField] LayerMask whatIsGround;
 
     bool isGrounded;
 
     float maxSpeed;
+
+    public List<Transform> rayPoints;
+    public float groundRayLength = 2;
     
 
     void Awake()
     {
         carRb = GetComponent<Rigidbody>();
-        maxSpeed = 10 * vehicle.Speed.Value;
 
     }
     void Update()
@@ -37,6 +40,7 @@ public class CarController : MonoBehaviour
 
     void FixedUpdate()
     {
+        CheckIsGrounded();
         Move();
         Steer();
         AddDownForce();
@@ -47,13 +51,13 @@ public class CarController : MonoBehaviour
     {
         foreach(var wheel in vehicle.Wheels)
         {
-            wheel.wheelCollider.motorTorque = moveInput * vehicle.maxAcceleration;
+            wheel.wheelCollider.motorTorque = moveInput * vehicle.carStats.Acceleration.Value;
         }
         KPH = carRb.velocity.magnitude * 3.6f;
 
         if(carRb.velocity.magnitude > maxSpeed)
         {
-            carRb.velocity = Vector3.ClampMagnitude(carRb.velocity, maxSpeed);
+            carRb.velocity = Vector3.ClampMagnitude(carRb.velocity, vehicle.carStats.topSpeed);
         }
         
     }
@@ -72,5 +76,24 @@ public class CarController : MonoBehaviour
     void AddDownForce()
     {
         carRb.AddForce(-transform.up * DownForceValue * carRb.velocity.magnitude);
+    }
+
+    void CheckIsGrounded()
+    {
+        RaycastHit hit;
+        Vector3 groundNormal = Vector3.zero;
+        foreach(Transform point in rayPoints)
+        {
+            if(Physics.Raycast(point.position, -transform.up, out hit, groundRayLength, whatIsGround))
+            {
+                isGrounded = true;
+
+                groundNormal += hit.normal;
+                transform.rotation = Quaternion.FromToRotation(transform.up, groundNormal) * transform.rotation;
+            }
+                                        
+
+        }
+
     }
 }

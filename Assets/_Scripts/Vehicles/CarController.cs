@@ -38,7 +38,10 @@ public class CarController : MonoBehaviour
         steerInput = Input.GetAxis("Horizontal");
 
         transform.position = carRb.transform.position;
+
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0f, steerInput * vehicle.turnSensitivity* vehicle.carStats.turnStrength * Time.deltaTime, 0f));
+
+        
     }
 
     void FixedUpdate()

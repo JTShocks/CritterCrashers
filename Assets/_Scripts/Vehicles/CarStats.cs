@@ -26,6 +26,8 @@ public class CarStats : ScriptableObject
     public float groundDrag;
 
     public VehicleStat Handling;
+
+    public float turnStrength = 180;
     public VehicleStat OffRoading;
     [Tooltip("Determines which car bounces off another in a collision")]
     public VehicleStat Weight;

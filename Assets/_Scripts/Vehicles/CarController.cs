@@ -19,7 +19,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private float KPH;
     [SerializeField] LayerMask whatIsGround;
 
-    bool isGrounded;
+    [SerializeField] bool isGrounded;
 
     float maxSpeed;
 
@@ -36,6 +36,9 @@ public class CarController : MonoBehaviour
     {
         moveInput = Input.GetAxis("Vertical");
         steerInput = Input.GetAxis("Horizontal");
+
+        transform.position = carRb.transform.position;
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0f, steerInput * vehicle.turnSensitivity* vehicle.carStats.turnStrength * Time.deltaTime, 0f));
     }
 
     void FixedUpdate()
@@ -49,13 +52,19 @@ public class CarController : MonoBehaviour
     //All users use this to move the vehicle they are controlling
     public void Move()
     {
-        foreach(var wheel in vehicle.Wheels)
-        {
-            wheel.wheelCollider.motorTorque = moveInput * vehicle.carStats.Acceleration.Value;
-        }
+        
         KPH = carRb.velocity.magnitude * 3.6f;
+        if(isGrounded)
+        {
+            if(Mathf.Abs(moveInput * vehicle.maxAcceleration) > 0)
+            {
+                carRb.AddForce(transform.forward * moveInput *vehicle.maxAcceleration * 1000);
 
-        if(carRb.velocity.magnitude > maxSpeed)
+            }
+
+        }
+
+        if(carRb.velocity.magnitude > vehicle.carStats.topSpeed)
         {
             carRb.velocity = Vector3.ClampMagnitude(carRb.velocity, vehicle.carStats.topSpeed);
         }
@@ -64,18 +73,16 @@ public class CarController : MonoBehaviour
 
     public void Steer()
     {
-        foreach(var wheel in vehicle.Wheels)
-        {
-            if(wheel.axel == Vehicle.Axel.Front)
-            {
-                var steerAngle = steerInput * vehicle.turnSensitivity *vehicle.maxSteerAngle;
-                wheel.wheelCollider.steerAngle = Mathf.Lerp(wheel.wheelCollider.steerAngle, steerAngle, 0.6f);
-            }
-        }
+        var steerAngle = steerInput * vehicle.turnSensitivity *vehicle.maxSteerAngle;
+        //carRb.rotation = Quaternion.Euler(0, steerAngle, 0);
     }
     void AddDownForce()
     {
-        carRb.AddForce(-transform.up * DownForceValue * carRb.velocity.magnitude);
+        if(isGrounded)
+        {
+            carRb.AddForce(-transform.up * DownForceValue * carRb.velocity.magnitude);
+        }
+
     }
 
     void CheckIsGrounded()

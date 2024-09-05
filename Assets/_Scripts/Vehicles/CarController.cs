@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class CarController : MonoBehaviour
 {
 
     public Vehicle vehicle;
 
-    private Rigidbody carRb;
+    [SerializeField] Rigidbody carRb;
 
     float moveInput;
     float steerInput;
@@ -29,7 +28,7 @@ public class CarController : MonoBehaviour
 
     void Awake()
     {
-        carRb = GetComponent<Rigidbody>();
+        carRb.transform.parent = null;
 
     }
     void Update()
@@ -37,15 +36,16 @@ public class CarController : MonoBehaviour
         moveInput = Input.GetAxis("Vertical");
         steerInput = Input.GetAxis("Horizontal");
 
-        transform.position = carRb.transform.position;
+        //transform.position = carRb.transform.position;
 
-        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0f, steerInput * vehicle.turnSensitivity* vehicle.carStats.turnStrength * Time.deltaTime, 0f));
+        
 
         
     }
 
     void FixedUpdate()
     {
+        isGrounded = false;
         CheckIsGrounded();
         Move();
         Steer();
@@ -59,12 +59,17 @@ public class CarController : MonoBehaviour
         KPH = carRb.velocity.magnitude * 3.6f;
         if(isGrounded)
         {
+            carRb.drag = 2;
             if(Mathf.Abs(moveInput * vehicle.maxAcceleration) > 0)
             {
                 carRb.AddForce(transform.forward * moveInput *vehicle.maxAcceleration * 1000);
 
             }
 
+        }
+        else
+        {
+            carRb.drag = 0.1f;
         }
 
         if(carRb.velocity.magnitude > vehicle.carStats.topSpeed)
@@ -77,7 +82,8 @@ public class CarController : MonoBehaviour
     public void Steer()
     {
         var steerAngle = steerInput * vehicle.turnSensitivity *vehicle.maxSteerAngle;
-        //carRb.rotation = Quaternion.Euler(0, steerAngle, 0);
+        carRb.MoveRotation(Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0f, steerInput * vehicle.turnSensitivity* vehicle.carStats.turnStrength*Time.fixedDeltaTime, 0f)));
+        
     }
     void AddDownForce()
     {
@@ -99,7 +105,7 @@ public class CarController : MonoBehaviour
                 isGrounded = true;
 
                 groundNormal += hit.normal;
-                transform.rotation = Quaternion.FromToRotation(transform.up, groundNormal) * transform.rotation;
+                carRb.MoveRotation(Quaternion.FromToRotation(transform.up, groundNormal) * carRb.rotation);
             }
                                         
 

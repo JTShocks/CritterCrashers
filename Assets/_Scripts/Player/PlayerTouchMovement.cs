@@ -20,14 +20,14 @@ public class PlayerTouchMovement : MonoBehaviour
     {
         EnhancedTouchSupport.Enable();
         ETouch.Touch.onFingerDown += HandleFingerDown;
-        ETouch.Touch.onFingerUp += HandleFingerUp;
+        ETouch.Touch.onFingerUp += HandleLoseFinger;
         ETouch.Touch.onFingerMove += HandleFingerMove;
     }
 
     void OnDisable()
     {
         ETouch.Touch.onFingerDown -= HandleFingerDown;
-        ETouch.Touch.onFingerUp -= HandleFingerUp;
+        ETouch.Touch.onFingerUp -= HandleLoseFinger;
         ETouch.Touch.onFingerMove += HandleFingerMove;
         EnhancedTouchSupport.Disable();
     }
@@ -63,9 +63,15 @@ public class PlayerTouchMovement : MonoBehaviour
             movementAmount = knobPosition / maxMovement;
         }
     }
-    private void HandleFingerUp(Finger touchedFinger)
+    private void HandleLoseFinger(Finger lostFinger)
     {
-        
+        if(lostFinger == movementFinger)
+        {
+            movementFinger = null;
+            Joystick.Knob.anchoredPosition = Vector2.zero;
+            Joystick.gameObject.SetActive(false);
+            movementAmount = Vector2.zero;
+        }
     }
 
     private void HandleFingerDown(Finger touchedFinger)

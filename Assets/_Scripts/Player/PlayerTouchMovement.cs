@@ -44,9 +44,24 @@ public class PlayerTouchMovement : MonoBehaviour
     {
         
     }
-    private void HandleFingerMove(Finger touchedFinger)
+    private void HandleFingerMove(Finger movedFinger)
     {
-        
+        if(movedFinger == movementFinger)
+        {
+            Vector2 knobPosition;
+            float maxMovement = joystickSize.x / 2f;
+            ETouch.Touch currentTouch = movedFinger.currentTouch;
+            if(Vector2.Distance(currentTouch.screenPosition, Joystick.RectTransform.anchoredPosition) > maxMovement)
+            {
+                knobPosition = (currentTouch.screenPosition - Joystick.RectTransform.anchoredPosition).normalized * maxMovement;
+            }
+            else
+            {
+                knobPosition = currentTouch.screenPosition - Joystick.RectTransform.anchoredPosition;
+            }
+            Joystick.Knob.anchoredPosition = knobPosition;
+            movementAmount = knobPosition / maxMovement;
+        }
     }
     private void HandleFingerUp(Finger touchedFinger)
     {

@@ -1,11 +1,11 @@
 using Unity.VisualScripting;
 using UnityEngine;
-#if UNITY_ANDROID
+//#if UNITY_ANDROID
 using UnityEngine.InputSystem.EnhancedTouch;
 using ETouch = UnityEngine.InputSystem.EnhancedTouch;
-#endif
+//#endif
 
-#if UNITY_ANDROID
+//#if UNITY_ANDROID
 public class PlayerTouchMovement : MonoBehaviour
 {
 
@@ -17,7 +17,9 @@ public class PlayerTouchMovement : MonoBehaviour
     private PlayerController Player;
 
     private Finger movementFinger;
-    private Vector2 movementAmount; 
+    
+    [HideInInspector]
+    public Vector2 movementAmount; 
 
     void OnEnable()
     {
@@ -36,14 +38,8 @@ public class PlayerTouchMovement : MonoBehaviour
     }
     
 
-
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
     }
@@ -110,4 +106,4 @@ public class PlayerTouchMovement : MonoBehaviour
     }
 }
 
-#endif
+//#endif

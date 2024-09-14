@@ -33,36 +33,29 @@ public class CarController : MonoBehaviour
     }
     void Update()
     {
-        moveInput = Input.GetAxis("Vertical");
-        steerInput = Input.GetAxis("Horizontal");
-
-        //transform.position = carRb.transform.position;
-
-        
-
-        
+        transform.position = carRb.transform.position;
     }
 
     void FixedUpdate()
     {
         isGrounded = false;
         CheckIsGrounded();
-        Move();
-        Steer();
+        //Move();
+        //Steer(new Vector3(Input.GetAxis("Horizontal"), 0, 0));
         AddDownForce();
     }
 
     //All users use this to move the vehicle they are controlling
-    public void Move()
+    public void Move(Vector3 moveInput)
     {
         
         KPH = carRb.velocity.magnitude * 3.6f;
         if(isGrounded)
         {
             carRb.drag = 2;
-            if(Mathf.Abs(moveInput * vehicle.maxAcceleration) > 0)
+            if(Mathf.Abs(moveInput.z * vehicle.maxAcceleration) > 0)
             {
-                carRb.AddForce(transform.forward * moveInput *vehicle.maxAcceleration * 1000);
+                carRb.AddForce(transform.forward * moveInput.z *vehicle.maxAcceleration * 1000);
 
             }
 
@@ -79,10 +72,11 @@ public class CarController : MonoBehaviour
         
     }
 
-    public void Steer()
+    public void Steer(Vector3 steerInput)
     {
-        var steerAngle = steerInput * vehicle.turnSensitivity *vehicle.maxSteerAngle;
-        carRb.MoveRotation(Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0f, steerInput * vehicle.turnSensitivity* vehicle.carStats.turnStrength*Time.fixedDeltaTime, 0f)));
+
+        var steerAngle = steerInput.x * vehicle.turnSensitivity *vehicle.maxSteerAngle;
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0f, steerInput.x * vehicle.turnSensitivity* vehicle.carStats.turnStrength*Time.deltaTime * steerInput.z, 0f));
         
     }
     void AddDownForce()
@@ -105,7 +99,7 @@ public class CarController : MonoBehaviour
                 isGrounded = true;
 
                 groundNormal += hit.normal;
-                carRb.MoveRotation(Quaternion.FromToRotation(transform.up, groundNormal) * carRb.rotation);
+                transform.rotation = Quaternion.FromToRotation(transform.up, groundNormal) * transform.rotation;
             }
                                         
 

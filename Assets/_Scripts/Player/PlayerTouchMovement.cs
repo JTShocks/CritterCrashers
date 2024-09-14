@@ -1,8 +1,11 @@
 using Unity.VisualScripting;
 using UnityEngine;
+#if UNITY_ANDROID
 using UnityEngine.InputSystem.EnhancedTouch;
 using ETouch = UnityEngine.InputSystem.EnhancedTouch;
+#endif
 
+#if UNITY_ANDROID
 public class PlayerTouchMovement : MonoBehaviour
 {
 
@@ -106,3 +109,5 @@ public class PlayerTouchMovement : MonoBehaviour
         return startPosition;
     }
 }
+
+#endif

@@ -22,8 +22,6 @@ public class CheckpointManager : MonoBehaviour
     void OnEnable()
     {
         var children = GetComponentsInChildren<Checkpoint>();
-
-        //TODO: Fix this gross hack for making the linked list start with the right checkpoint
         checkpoints.AddFirst(children[0]);
 
         Debug.Log(children[0].name);

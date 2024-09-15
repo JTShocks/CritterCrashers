@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class CheckpointManager : MonoBehaviour
     //Starting line is checkpoint at ID 0
     
     private LinkedList<Checkpoint> checkpoints = new();
+
+    public static event Action<Racer> RacerCrossedStartingLine;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -37,19 +40,28 @@ public class CheckpointManager : MonoBehaviour
         }
     }
 
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //Controls setting the next checkpoint for a racer and determining what happens next
     void OnRacerCrossCheckpoint(Racer racer, Checkpoint checkpoint)
     {
-        //Update the racer's current checkpoints
+        //Determine if the player crossed the starting line
+        if(checkpoints.First.Value == checkpoint)
+        {
+            //Send out the event and who crossed it
+            RacerCrossedStartingLine.Invoke(racer);
+        }
 
+        //Find the next checkpoint for the racer in their current position
         var nextCheckpoint = checkpoints.Find(checkpoint).Next;
-        racer.currentCheckpoint = nextCheckpoint.Value;
+        //Check if the checkpoint they crossed is the LAST checkpoint
+        if(nextCheckpoint == null)
+        {
+            //Set the racer's current checkpoint to the FIRST checkpoint
+            racer.currentCheckpoint = checkpoints.First.Value;
+        }
+        else
+        {
+            //Set racer checkpoint to the next one in the list
+            racer.currentCheckpoint = nextCheckpoint.Value;
+        }
     }
 }

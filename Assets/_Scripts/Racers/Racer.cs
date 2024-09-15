@@ -16,7 +16,8 @@ public class Racer : MonoBehaviour
 
 
     //The current checkpoint for the racer
-    public Checkpoint currentCheckpoint;
+    public Checkpoint nextCheckpoint;
+
 
     public int currentLap;
 
@@ -31,5 +32,11 @@ public class Racer : MonoBehaviour
     void Update()
     {
         
+    }
+
+
+    public void SetNextCheckpoint(Checkpoint checkpoint)
+    {
+        nextCheckpoint = checkpoint;
     }
 }

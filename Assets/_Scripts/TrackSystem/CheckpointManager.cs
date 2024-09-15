@@ -6,6 +6,7 @@ using UnityEngine;
 public class CheckpointManager : MonoBehaviour
 {
 
+    public static CheckpointManager instance {get; private set;}
     // Keeps track of all the checkpoints and knows when one is crossed
     // Establishes their ID order when a race starts
 
@@ -15,20 +16,28 @@ public class CheckpointManager : MonoBehaviour
     
     private LinkedList<Checkpoint> checkpoints = new();
 
-    public static event Action<Racer> RacerCrossedStartingLine;
+    public static event Action<Racer> RacerCrossedStartingLine = delegate {};
 
     // Start is called before the first frame update
     void OnEnable()
     {
         var children = GetComponentsInChildren<Checkpoint>();
 
+        //TODO: Fix this gross hack for making the linked list start with the right checkpoint
         checkpoints.AddFirst(children[0]);
+
+        Debug.Log(children[0].name);
         LinkedListNode<Checkpoint> current = checkpoints.First;
         foreach(Checkpoint checkpoint in children)
         {
-            checkpoints.AddAfter(current, checkpoint);
-            current = current.Next;
+            if(!checkpoints.Contains(checkpoint))
+            {
+                checkpoints.AddAfter(current, checkpoint);
+                current = current.Next;
+                
+            }
             checkpoint.RacerCrossedCheckpoint += OnRacerCrossCheckpoint;
+
 
         }
     }
@@ -40,28 +49,54 @@ public class CheckpointManager : MonoBehaviour
         }
     }
 
-    //Controls setting the next checkpoint for a racer and determining what happens next
-    void OnRacerCrossCheckpoint(Racer racer, Checkpoint checkpoint)
+    private void Awake()
     {
-        //Determine if the player crossed the starting line
-        if(checkpoints.First.Value == checkpoint)
+        if(instance != null && instance != this)
         {
-            //Send out the event and who crossed it
-            RacerCrossedStartingLine.Invoke(racer);
-        }
-
-        //Find the next checkpoint for the racer in their current position
-        var nextCheckpoint = checkpoints.Find(checkpoint).Next;
-        //Check if the checkpoint they crossed is the LAST checkpoint
-        if(nextCheckpoint == null)
-        {
-            //Set the racer's current checkpoint to the FIRST checkpoint
-            racer.currentCheckpoint = checkpoints.First.Value;
+            Destroy(this);
         }
         else
         {
-            //Set racer checkpoint to the next one in the list
-            racer.currentCheckpoint = nextCheckpoint.Value;
+            instance = this;
         }
+    }
+
+    //Controls setting the next checkpoint for a racer and determining what happens next
+    void OnRacerCrossCheckpoint(Racer racer, Checkpoint checkpoint)
+    {
+        //Make sure the player cannot cross irrelevant checkpoints
+        var racerCurrent = checkpoints.Find(racer.nextCheckpoint);
+        var currentCheckpoint = checkpoints.Find(checkpoint);
+
+        if(currentCheckpoint != racerCurrent)
+        {
+            Debug.Log("Crossed invalid checkpoint");
+            return;
+        }
+        var nextCheckpoint = checkpoints.Find(checkpoint).Next;
+        //Determine if the player crossed the starting line
+        if(checkpoints.First.Value == checkpoint)
+        {            
+            Debug.Log("Racer crossed starting line");
+            //Send out the event and who crossed it
+            RacerCrossedStartingLine(racer);
+            //Always assign the next checkpoint as the one after the first
+            nextCheckpoint = checkpoints.First.Next;
+
+        }
+
+        //Find the next checkpoint for the racer in their current position
+        
+        //Check if the checkpoint they crossed is the LAST checkpoint
+        if(nextCheckpoint == null)
+        {
+            Debug.Log("Next checkpoint returned null");
+            //Set the racer's current checkpoint to the FIRST checkpoint
+            nextCheckpoint = checkpoints.First;
+        }
+        //Set racer checkpoint to the next one in the list
+        racer.SetNextCheckpoint(nextCheckpoint.Value);
+        
+        Debug.Log("Next checkpoint is:" + racer.nextCheckpoint.name);
     }
 }

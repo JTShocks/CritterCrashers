@@ -7,7 +7,6 @@ public class Checkpoint : MonoBehaviour
 {
 
     public int checkpointID;
-    public Checkpoint nextCheckpoint;
 
     //Create a struct to store the given information of a checkpoint
     //Use a linked list to determine the order of given checkpoint data

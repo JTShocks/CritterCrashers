@@ -18,6 +18,8 @@ public class CheckpointManager : MonoBehaviour
 
     public static event Action<Racer> RacerCrossedStartingLine = delegate {};
 
+    public static event Action<Racer> RacerAdvanced = delegate {};
+
     // Start is called before the first frame update
     void OnEnable()
     {
@@ -94,6 +96,8 @@ public class CheckpointManager : MonoBehaviour
         }
         //Set racer checkpoint to the next one in the list
         racer.SetNextCheckpoint(nextCheckpoint.Value);
+        
+        RacerAdvanced(racer);
         
         Debug.Log("Next checkpoint is:" + racer.nextCheckpoint.name);
     }

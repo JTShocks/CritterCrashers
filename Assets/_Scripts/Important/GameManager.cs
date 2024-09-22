@@ -25,4 +25,11 @@ public class GameManager : Singleton<GameManager>
     {
         
     }
+
+
+    void ChangeScene()
+    {
+        //Function to change to a new scene.
+        //Fade to loading screen when needed.
+    }
 }

@@ -81,7 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystickSize: {x: 300, y: 300}
   Joystick: {fileID: 0}
-  Player: {fileID: 0}
+  Player: {fileID: 6040136933155059029}
   movementAmount: {x: 0, y: 0}
 --- !u!114 &6040136933155059029
 MonoBehaviour:
@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 8992730369753359886}
   - component: {fileID: 395752806581398316}
   - component: {fileID: 3977927450210540366}
+  - component: {fileID: 2594571207229828281}
   m_Layer: 0
   m_Name: RB
   m_TagString: Untagged
@@ -208,6 +209,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!114 &2594571207229828281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3531043984283627121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1911f9df9070e439efd78987a8fdff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextCheckpoint: {fileID: 0}
+  currentLap: 0
 --- !u!1 &4467217244364460289
 GameObject:
   m_ObjectHideFlags: 0

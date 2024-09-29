@@ -17,15 +17,15 @@ public class BoostPad : MonoBehaviour
     {
        // box = GetComponent<BoxCollider>();
     }
-    void OnTriggerStay(Collider collider)
+    void OnTriggerEnter(Collider collider)
     {
         Racer racer = collider.gameObject.GetComponent<Racer>();
         
         if(racer != null)
         {
-            Rigidbody car = racer.GetComponent<Rigidbody>();
-            Vector3 carVector = car.velocity.normalized;
-            car.AddForce(carVector * boostStrength, ForceMode.Force);
+            //Apply the boost effect
+
+            racer.controller.ApplyBoost(5f);
         }
         
     }

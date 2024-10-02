@@ -9,7 +9,7 @@ public class BoostPad : MonoBehaviour
 {
 
     public BoxCollider box;
-    public float boostStrength;
+    public float boostDuration;
 
     public bool showDebug;
 
@@ -25,7 +25,7 @@ public class BoostPad : MonoBehaviour
         {
             //Apply the boost effect
 
-            racer.controller.ApplyBoost(5f);
+            racer.controller.ApplyBoost(boostDuration);
         }
         
     }

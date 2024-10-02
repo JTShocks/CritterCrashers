@@ -16,7 +16,7 @@ public class CarController : MonoBehaviour
     bool isBoosted;
     const float BOOST_STRENGTH = 5;
 
-    public float DownForceValue = 50.0f;
+    public float DownForceValue = 100.0f;
 
     [SerializeField] private float KPH;
     [SerializeField] LayerMask whatIsGround;

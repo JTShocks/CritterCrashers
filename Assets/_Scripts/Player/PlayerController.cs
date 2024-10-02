@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
         #if UNITY_ANDROID
         //Only in the Android build, should the player input component be read
-           // MovementInput(playerTouchMovement.movementAmount);
+           MovementInput(playerTouchMovement.movementAmount);
         #endif
 
 

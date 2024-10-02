@@ -9,9 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 0
-    path: Assets/Scenes/debug_testTrack.unity
+    path: Assets/Scenes/Tracks/debug_testTrack.unity
     guid: 51518e20e40bade47ab082923a1172f9
   - enabled: 1
-    path: Assets/Scenes/Art.unity
-    guid: 45fabb62950d58b4a93927eb0492cd65
-  m_configObjects: {}
+    path: Assets/Scenes/Tracks/BeaverWoods.unity
+    guid: 11627388a0ce6c3498aa42bb5b2b6dda
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 9d74a784f45d82d4a97cf89255788439,
+      type: 2}

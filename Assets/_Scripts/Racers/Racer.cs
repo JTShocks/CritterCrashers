@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 public class Racer : MonoBehaviour
 {
@@ -18,14 +20,14 @@ public class Racer : MonoBehaviour
     //The current checkpoint for the racer
     public Checkpoint nextCheckpoint;
 
-
+    //The assigned controller of the racer
+    public CarController controller;
     public int currentLap;
-
-
+    Rigidbody rb;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame

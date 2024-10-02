@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
@@ -12,7 +13,10 @@ public class CarController : MonoBehaviour
     float moveInput;
     float steerInput;
 
-    public float DownForceValue = 50.0f;
+    bool isBoosted;
+    const float BOOST_STRENGTH = 5;
+
+    public float DownForceValue = 100.0f;
 
     [SerializeField] private float KPH;
     [SerializeField] LayerMask whatIsGround;
@@ -23,11 +27,18 @@ public class CarController : MonoBehaviour
 
     public List<Transform> rayPoints;
     public float groundRayLength = 2;
+
+    public float carTopSpeed;
     
 
     void Awake()
-    {
+    {        
+        carTopSpeed = vehicle.carStats.topSpeed;
+        Debug.Log(carTopSpeed);
+        Racer racer = carRb.GetComponent<Racer>();
+        racer.controller = this;
         carRb.transform.parent = null;
+
 
     }
     void Update()
@@ -42,6 +53,20 @@ public class CarController : MonoBehaviour
         //Move();
         //Steer(new Vector3(Input.GetAxis("Horizontal"), 0, 0));
         AddDownForce();
+        if(!isBoosted)
+        {
+            if(carRb.velocity.magnitude > carTopSpeed)
+            {
+                carRb.velocity = Vector3.ClampMagnitude(carRb.velocity, carTopSpeed);
+            }
+        }
+        else
+        {
+            carRb.velocity = carRb.velocity.normalized * (carTopSpeed+BOOST_STRENGTH);
+        }
+
+
+
     }
 
     //All users use this to move the vehicle they are controlling
@@ -64,10 +89,7 @@ public class CarController : MonoBehaviour
             carRb.drag = 0.1f;
         }
 
-        if(carRb.velocity.magnitude > vehicle.carStats.topSpeed)
-        {
-            carRb.velocity = Vector3.ClampMagnitude(carRb.velocity, vehicle.carStats.topSpeed);
-        }
+
         
     }
 
@@ -85,6 +107,22 @@ public class CarController : MonoBehaviour
             carRb.AddForce(-transform.up * DownForceValue * carRb.velocity.magnitude);
         }
 
+    }
+
+    public void ApplyBoost(float duration)
+    {
+        var timer = this.AddComponent<SimpleTimer>();
+        timer.targetTime = duration;
+        timer.OnTimerStopped += CancelBoost;
+        //carTopSpeed += 50;
+        isBoosted = true;
+        
+    }
+    public void CancelBoost(SimpleTimer timer)
+    {
+        timer.OnTimerStopped -= CancelBoost;
+        //carTopSpeed -= 50;
+        isBoosted = false;
     }
 
     void CheckIsGrounded()

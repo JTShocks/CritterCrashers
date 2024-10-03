@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CarController : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class CarController : MonoBehaviour
     public Vehicle vehicle;
 
     [SerializeField] Rigidbody carRb;
+
+    [SerializeField]
+    public UnityEvent OnBoostActivated;
 
     float moveInput;
     float steerInput;
@@ -116,6 +120,7 @@ public class CarController : MonoBehaviour
         timer.OnTimerStopped += CancelBoost;
         //carTopSpeed += 50;
         isBoosted = true;
+        OnBoostActivated.Invoke();
         
     }
     public void CancelBoost(SimpleTimer timer)

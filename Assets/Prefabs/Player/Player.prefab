@@ -58,7 +58,31 @@ MonoBehaviour:
   carRb: {fileID: 395752806581398316}
   OnBoostActivated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3482746111880878652}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 5174454252672115250}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   DownForceValue: 100
   KPH: 0
   whatIsGround:
@@ -608,6 +632,18 @@ PrefabInstance:
 --- !u!4 &1808023647723362603 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8461901335701520097, guid: b7fcd7a2c26347947bfad7a0291782af,
+    type: 3}
+  m_PrefabInstance: {fileID: 7816513387481458634}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3482746111880878652 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6641937133041008118, guid: b7fcd7a2c26347947bfad7a0291782af,
+    type: 3}
+  m_PrefabInstance: {fileID: 7816513387481458634}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5174454252672115250 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3149862464769558008, guid: b7fcd7a2c26347947bfad7a0291782af,
     type: 3}
   m_PrefabInstance: {fileID: 7816513387481458634}
   m_PrefabAsset: {fileID: 0}

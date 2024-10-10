@@ -5,6 +5,8 @@ using UnityEngine;
 public class Gamemode : MonoBehaviour
 {
     
+
+
     //Initialize the gamemode on the current track, grabbing all the data for the track and the checkpoints
 
     //For example: A Time attack gamemode connects to the Checkpoint crossed event, by adding time
@@ -16,6 +18,9 @@ public class Gamemode : MonoBehaviour
     {
         Debug.Log("Gamemode is initializing...");
     }
+
+
+    
 
 
 

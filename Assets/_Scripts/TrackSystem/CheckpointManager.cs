@@ -40,6 +40,15 @@ public class CheckpointManager : MonoBehaviour
 
 
         }
+
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else if(instance != this)
+        {
+            Destroy(this);
+        }
     }
     void OnDisable()
     {

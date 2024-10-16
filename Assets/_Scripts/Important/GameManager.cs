@@ -16,14 +16,12 @@ public class GameManager : Singleton<GameManager>
 
     //The game manager will manage the moving between scenes and the firing of given events
 
-    [SerializeField]
-    public Gamemode currentGamemode;
-
+    Gamemode currentGamemode;
 
     protected override void Awake()
     {
         base.Awake();
-        
+        OnChooseGamemode(0);
     }
 
 
@@ -43,9 +41,14 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene(sceneToLoad);
     }
 
-    void OnChooseGamemode(Gamemode gamemode)
+    void OnChooseGamemode(int choice)
     {
-
+        switch(choice)
+        {
+            case 0:
+            currentGamemode = new GM_Race();
+            break;
+        }
     }
 
     public enum GameState{

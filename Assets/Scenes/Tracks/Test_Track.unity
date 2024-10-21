@@ -3568,6 +3568,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2594571207229828281, guid: f82d3692c32018246ace5a7fb8a1c22b,
+        type: 3}
+      propertyPath: nextCheckpoint
+      value: 
+      objectReference: {fileID: 2120358945}
     - target: {fileID: 8385274289928258831, guid: f82d3692c32018246ace5a7fb8a1c22b,
         type: 3}
       propertyPath: Joystick
@@ -3815,6 +3820,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CheckpointManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621157803370999362, guid: c4c1d93507cc2854a96b2b1584509eb3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 53.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621157803370999362, guid: c4c1d93507cc2854a96b2b1584509eb3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.85577434
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621157803370999362, guid: c4c1d93507cc2854a96b2b1584509eb3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621157803370999362, guid: c4c1d93507cc2854a96b2b1584509eb3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.51734924
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621157803370999362, guid: c4c1d93507cc2854a96b2b1584509eb3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621157803370999362, guid: c4c1d93507cc2854a96b2b1584509eb3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 62.309
       objectReference: {fileID: 0}
     - target: {fileID: 4333558446019921260, guid: c4c1d93507cc2854a96b2b1584509eb3,
         type: 3}
@@ -6044,6 +6079,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &2120358945 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1444196044471227625, guid: c4c1d93507cc2854a96b2b1584509eb3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1260124529}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c870abd70224d40881f7ce98edb277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &130930874916500296
 PrefabInstance:
   m_ObjectHideFlags: 0

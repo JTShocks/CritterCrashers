@@ -16,18 +16,24 @@ public class GM_Race : Gamemode
 
     void OnEnable()
     {
-        CheckpointManager.RacerCrossedStartingLine += UpdateCurrentLap;
+        //CheckpointManager.RacerCrossedStartingLine += UpdateCurrentLap;
+    }
+    void OnDisable()
+    {
+        CheckpointManager.RacerCrossedStartingLine -= UpdateCurrentLap;
     }
 
     public override void Initialize()
     {
         base.Initialize();
+        CheckpointManager.RacerCrossedStartingLine += UpdateCurrentLap;
         Timer raceTimer = new Timer(){
             Interval = 1000,
             Enabled = true,
             AutoReset = true,
 
         };
+        Debug.Log("Race Gamemoe initialized!");
         //Set the base values for the gamemode
         //Trigger any effects that need to be triggered
 

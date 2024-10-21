@@ -22,6 +22,7 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
         OnChooseGamemode(0);
+        currentGamemode.Initialize();
     }
 
 

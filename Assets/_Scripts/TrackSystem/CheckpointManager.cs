@@ -88,7 +88,7 @@ public class CheckpointManager : MonoBehaviour
         {            
             Debug.Log("Racer crossed starting line");
             //Send out the event and who crossed it
-            RacerCrossedStartingLine(racer);
+            RacerCrossedStartingLine?.Invoke(racer);
             //Always assign the next checkpoint as the one after the first
             nextCheckpoint = checkpoints.First.Next;
 
@@ -106,7 +106,7 @@ public class CheckpointManager : MonoBehaviour
         //Set racer checkpoint to the next one in the list
         racer.SetNextCheckpoint(nextCheckpoint.Value);
         
-        RacerAdvanced(racer);
+        RacerAdvanced?.Invoke(racer);
         
         Debug.Log("Next checkpoint is:" + racer.nextCheckpoint.name);
     }

@@ -21,6 +21,11 @@ public class GM_Race : Gamemode
         CheckpointManager.RacerCrossedStartingLine -= UpdateCurrentLap;
     }
 
+    void Awake()
+    {
+        Initialize();
+    }
+
     public override void Initialize()
     {
         base.Initialize();

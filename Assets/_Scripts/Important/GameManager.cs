@@ -17,8 +17,6 @@ public class GameManager : Singleton<GameManager>
 
     //The game manager will manage the moving between scenes and the firing of given events
 
-    Gamemode currentGamemode;
-
     protected override void Awake()
     {
         base.Awake();
@@ -46,7 +44,7 @@ public class GameManager : Singleton<GameManager>
         switch(choice)
         {
             case 0:
-            currentGamemode = new GM_Race();
+
             break;
         }
     }

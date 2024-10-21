@@ -26,6 +26,7 @@ public class GM_Race : Gamemode
         base.Initialize();
 
         EventManager.OnTimerStart();
+        EventManager.OnLapUpdate(currentLap);
         Debug.Log("Race Gamemode initialized!");
         //Set the base values for the gamemode
         //Trigger any effects that need to be triggered
@@ -40,6 +41,6 @@ public class GM_Race : Gamemode
         //Invoke method of the canvas 
         currentLap++;
         Debug.Log("Current lap is:" + currentLap );
-        LapCounter.UpdateLap?.Invoke(currentLap);
+        EventManager.OnLapUpdate(currentLap);
     }
 }

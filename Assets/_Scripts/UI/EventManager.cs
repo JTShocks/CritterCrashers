@@ -9,4 +9,8 @@ public static class EventManager
     public static void OnTimerStart() => TimerStart?.Invoke();
     public static void OnTimerStop() => TimerStop?.Invoke();
     public static void OnTimerUpdate(float value) => TimerUpdate?.Invoke(value);
+
+
+    public static event UnityAction<int> LapUpdate;
+    public static void OnLapUpdate(int value) => LapUpdate?.Invoke(value);
 }

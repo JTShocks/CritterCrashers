@@ -8,16 +8,19 @@ public class LapCounter : MonoBehaviour
 {
     private TMP_Text lapText;
 
-    public static Action<int> UpdateLap;
-
 
     void OnEnable()
     {
-        UpdateLap += OnUpdateLap;
+        EventManager.LapUpdate += OnUpdateLap;
     }
     void OnDisable()
     {
-        UpdateLap -= OnUpdateLap;
+        EventManager.LapUpdate -= OnUpdateLap;
+    }
+
+    void Awake()
+    {
+        lapText = GetComponent<TMP_Text>();
     }
 
     private void OnUpdateLap(int obj)

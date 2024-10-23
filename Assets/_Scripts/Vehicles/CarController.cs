@@ -62,6 +62,7 @@ public class CarController : MonoBehaviour
         //Move();
         //Steer(new Vector3(Input.GetAxis("Horizontal"), 0, 0));
         AddDownForce();
+        carRb.velocity = new Vector3(carRb.velocity.x, 0, carRb.velocity.z);
         if(!isBoosted)
         {
             if(carRb.velocity.magnitude > carTopSpeed)

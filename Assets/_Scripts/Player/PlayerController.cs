@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +10,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 inputVector;
 
     public CarController car;
+
+    [SerializeField]
+    public UnityEvent OnStartMove;
+    [SerializeField]
+    public UnityEvent OnStopMove;
 
 
 
@@ -49,6 +56,18 @@ public class PlayerController : MonoBehaviour
         
         car.Steer(inputVector);
 
+        if(inputVector.magnitude > 0 && !isMoving)
+        {
+            isMoving = true;
+            OnStartMove?.Invoke();
+        }
+        else if(Mathf.Approximately(inputVector.magnitude, 0) && isMoving)
+        {
+            isMoving = false;
+            OnStopMove?.Invoke();
+        }
+        
+
 
         
     }
@@ -57,6 +76,9 @@ public class PlayerController : MonoBehaviour
     {
         inputVector = new Vector3(input.x, 0, input.y);
         inputVector.Normalize();
+
+
+
 
 
     }

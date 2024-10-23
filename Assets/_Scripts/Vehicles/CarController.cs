@@ -14,6 +14,8 @@ public class CarController : MonoBehaviour
     [SerializeField]
     public UnityEvent OnBoostActivated;
 
+
+
     float moveInput;
     float steerInput;
 
@@ -83,6 +85,7 @@ public class CarController : MonoBehaviour
     //All users use this to move the vehicle they are controlling
     public void Move(Vector3 moveInput)
     {
+
         //KPH calculation
         KPH = carRb.velocity.magnitude * 3.6f;
         if(isGrounded)

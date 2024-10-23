@@ -33,6 +33,7 @@ public class CarController : MonoBehaviour
     public float groundRayLength = 2;
 
     public float carTopSpeed;
+    float gravityForce = 10f;
 
     [SerializeField] GameObject dustVFX;
 
@@ -65,6 +66,7 @@ public class CarController : MonoBehaviour
         {
             if(carRb.velocity.magnitude > carTopSpeed)
             {
+                
                 carRb.velocity = Vector3.ClampMagnitude(carRb.velocity, carTopSpeed);
             }
         }
@@ -80,7 +82,7 @@ public class CarController : MonoBehaviour
     //All users use this to move the vehicle they are controlling
     public void Move(Vector3 moveInput)
     {
-        
+        //KPH calculation
         KPH = carRb.velocity.magnitude * 3.6f;
         if(isGrounded)
         {
@@ -94,7 +96,10 @@ public class CarController : MonoBehaviour
         }
         else
         {
+
             carRb.drag = 0.1f;
+            carRb.AddForce(Vector3.up * -gravityForce * 100f);
+
         }
 
 

@@ -98,6 +98,7 @@ MonoBehaviour:
   - {fileID: 1204333525063336908}
   groundRayLength: 0.5
   carTopSpeed: 0
+  dustVFX: {fileID: 6567253317795000279}
 --- !u!114 &8385274289928258831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 3531043984283627121}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -238,7 +239,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.45
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!114 &2594571207229828281
 MonoBehaviour:

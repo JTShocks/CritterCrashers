@@ -33,6 +33,9 @@ public class CarController : MonoBehaviour
     public float groundRayLength = 2;
 
     public float carTopSpeed;
+
+    [SerializeField] GameObject dustVFX;
+
     
 
     void Awake()
@@ -48,6 +51,7 @@ public class CarController : MonoBehaviour
     void Update()
     {
         transform.position = carRb.transform.position;
+        dustVFX.SetActive(isGrounded && carRb.velocity.magnitude > 10);
     }
 
     void FixedUpdate()

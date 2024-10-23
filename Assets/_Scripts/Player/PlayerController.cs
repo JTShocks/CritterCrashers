@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public CarController car;
 
 
+
+    bool isMoving;
     
     #if UNITY_ANDROID
     private PlayerTouchMovement playerTouchMovement;
@@ -38,7 +40,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         #if UNITY_ANDROID
         //Only in the Android build, should the player input component be read
            MovementInput(playerTouchMovement.movementAmount);
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
         
         car.Steer(inputVector);
 
+
         
     }
 
@@ -55,6 +57,8 @@ public class PlayerController : MonoBehaviour
     {
         inputVector = new Vector3(input.x, 0, input.y);
         inputVector.Normalize();
+
+
     }
 
     void FixedUpdate()

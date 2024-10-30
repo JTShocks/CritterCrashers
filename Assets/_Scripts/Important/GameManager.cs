@@ -13,12 +13,12 @@ public class GameManager : Singleton<GameManager>
 
     void OnEnable()
     {
-        Gamemode.GameWin += OnGameFinish;
+        Gamemode.GameFinish += OnGameFinish;
     }
 
     void OnDisable()
     {
-        Gamemode.GameWin -= OnGameFinish;
+        Gamemode.GameFinish -= OnGameFinish;
     }
 
     //Store a reference to the current game state

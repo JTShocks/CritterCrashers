@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Gamemode : MonoBehaviour
 {
-    public static Action<bool> GameWin;
+    public static event Action<bool> GameFinish = delegate{};
 
 
 
@@ -19,6 +19,15 @@ public class Gamemode : MonoBehaviour
     public virtual void Initialize()
     {
         Debug.Log("Gamemode is initializing...");
+    }
+
+    public void GameLose()
+    {
+        GameFinish?.Invoke(false);
+    }
+    public void GameWin()
+    {
+        GameFinish?.Invoke(true);
     }
 
 

@@ -6,11 +6,11 @@ using UnityEngine;
 public class GM_TimeAttack : Gamemode
 {
 
-    const int TIME_PER_CHECKPOINT = 2;
+    const float TIME_PER_CHECKPOINT = 2f;
     void OnEnable()
     {
         CheckpointManager.RacerAdvanced += AddRaceTime;
-        EventManager.TimerStop += FinishGame;
+        EventManager.TimerStop += GameLose;
         
     }
 
@@ -19,17 +19,13 @@ public class GM_TimeAttack : Gamemode
     void OnDisable()
     {
         CheckpointManager.RacerAdvanced -= AddRaceTime;
-        EventManager.TimerStop -= FinishGame;
+        EventManager.TimerStop -= GameLose;
         
     }
 
     void Start()
     {
         Initialize();
-    }
-    private void FinishGame()
-    {
-        GameWin?.Invoke(false);
     }
 
     public override void Initialize()
@@ -47,6 +43,7 @@ public class GM_TimeAttack : Gamemode
 
     public void AddRaceTime(Racer racer)
     {
+        Debug.Log("Time Added");
         EventManager.OnTimerUpdate(TIME_PER_CHECKPOINT);
     }
 }

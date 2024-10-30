@@ -14,6 +14,8 @@ public class CarController : MonoBehaviour
     [SerializeField]
     public UnityEvent OnBoostActivated;
 
+
+
     float moveInput;
     float steerInput;
 
@@ -33,6 +35,10 @@ public class CarController : MonoBehaviour
     public float groundRayLength = 2;
 
     public float carTopSpeed;
+    float gravityForce = 10f;
+
+    [SerializeField] GameObject dustVFX;
+
     
 
     void Awake()
@@ -48,6 +54,7 @@ public class CarController : MonoBehaviour
     void Update()
     {
         transform.position = carRb.transform.position;
+        dustVFX.SetActive(isGrounded && carRb.velocity.magnitude > 10);
     }
 
     void FixedUpdate()
@@ -57,10 +64,12 @@ public class CarController : MonoBehaviour
         //Move();
         //Steer(new Vector3(Input.GetAxis("Horizontal"), 0, 0));
         AddDownForce();
+        carRb.velocity = new Vector3(carRb.velocity.x, 0, carRb.velocity.z);
         if(!isBoosted)
         {
             if(carRb.velocity.magnitude > carTopSpeed)
             {
+                
                 carRb.velocity = Vector3.ClampMagnitude(carRb.velocity, carTopSpeed);
             }
         }
@@ -76,7 +85,8 @@ public class CarController : MonoBehaviour
     //All users use this to move the vehicle they are controlling
     public void Move(Vector3 moveInput)
     {
-        
+
+        //KPH calculation
         KPH = carRb.velocity.magnitude * 3.6f;
         if(isGrounded)
         {
@@ -90,7 +100,10 @@ public class CarController : MonoBehaviour
         }
         else
         {
+
             carRb.drag = 0.1f;
+            carRb.AddForce(Vector3.up * -gravityForce * 100f);
+
         }
 
 

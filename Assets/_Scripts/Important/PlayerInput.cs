@@ -40,7 +40,7 @@ public class PlayerInput : MonoBehaviour, PlayerControls.IKeyboardActions
 
     public void OnShoot(InputAction.CallbackContext context)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Shoot");
     }
 
 

@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Gamemode : MonoBehaviour
 {
-    
+    public static event Action<bool> GameFinish = delegate{};
+
 
 
     //Initialize the gamemode on the current track, grabbing all the data for the track and the checkpoints
@@ -17,6 +19,15 @@ public class Gamemode : MonoBehaviour
     public virtual void Initialize()
     {
         Debug.Log("Gamemode is initializing...");
+    }
+
+    public void GameLose()
+    {
+        GameFinish?.Invoke(false);
+    }
+    public void GameWin()
+    {
+        GameFinish?.Invoke(true);
     }
 
 

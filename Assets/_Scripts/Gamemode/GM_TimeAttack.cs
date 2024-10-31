@@ -7,6 +7,8 @@ public class GM_TimeAttack : Gamemode
 {
 
     const float TIME_PER_CHECKPOINT = 2f;
+
+    [SerializeField] AudioClip checkpointReachedSFX;
     void OnEnable()
     {
         CheckpointManager.RacerAdvanced += AddRaceTime;
@@ -45,5 +47,6 @@ public class GM_TimeAttack : Gamemode
     {
         Debug.Log("Time Added");
         EventManager.OnTimerUpdate(TIME_PER_CHECKPOINT);
+        AudioManager.OnPlaySoundEffect(checkpointReachedSFX);
     }
 }

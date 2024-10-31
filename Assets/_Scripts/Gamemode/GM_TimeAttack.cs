@@ -6,7 +6,7 @@ using UnityEngine;
 public class GM_TimeAttack : Gamemode
 {
 
-    const float TIME_PER_CHECKPOINT = 2f;
+    const float TIME_PER_CHECKPOINT = 3f;
 
     [SerializeField] AudioClip checkpointReachedSFX;
     void OnEnable()

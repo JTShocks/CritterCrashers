@@ -11,6 +11,16 @@ public class GameManager : Singleton<GameManager>
     public event Action<Gamemode> ChangeGamemode;
     //This is the game manager. It is very important.
 
+    void OnEnable()
+    {
+        Gamemode.GameFinish += OnGameFinish;
+    }
+
+    void OnDisable()
+    {
+        Gamemode.GameFinish -= OnGameFinish;
+    }
+
     //Store a reference to the current game state
     //InRace, InMenu, etc
     //Paused, Running, etc
@@ -29,6 +39,17 @@ public class GameManager : Singleton<GameManager>
     {
         
     }
+
+    void OnGameFinish(bool didWin)
+    {
+
+        if(!didWin)
+        {
+            ChangeScene("MainMenu");
+        }
+
+    }
+
 
 
     void ChangeScene(string sceneToLoad)

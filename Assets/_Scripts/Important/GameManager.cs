@@ -52,7 +52,7 @@ public class GameManager : Singleton<GameManager>
 
 
 
-    void ChangeScene(string sceneToLoad)
+    public void ChangeScene(string sceneToLoad)
     {
         //Function to change to a new scene.
         //Fade to loading screen when needed.

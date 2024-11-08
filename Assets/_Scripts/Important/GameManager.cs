@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
 
+    public string storedSceneToLoad;
     public event Action<Gamemode> ChangeGamemode;
     //This is the game manager. It is very important.
 
@@ -50,14 +51,24 @@ public class GameManager : Singleton<GameManager>
 
     }
 
+    public void SetStoredScene(string scene)
+    {
+        storedSceneToLoad = scene;
+    }
 
 
-    void ChangeScene(string sceneToLoad)
+
+    public void ChangeScene(string sceneToLoad)
     {
         //Function to change to a new scene.
         //Fade to loading screen when needed.
 
         SceneManager.LoadScene(sceneToLoad);
+    }
+
+    public void ChangeScene()
+    {
+        SceneManager.LoadScene(storedSceneToLoad);
     }
 
     void OnChooseGamemode(int choice)

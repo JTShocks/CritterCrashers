@@ -11,7 +11,7 @@ public class GameManager : Singleton<GameManager>
     public string storedSceneToLoad;
     public event Action<Gamemode> ChangeGamemode;
 
-    GameObject playerModel;
+    public GameObject playerModel;
     //This is the game manager. It is very important.
 
     void OnEnable()

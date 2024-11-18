@@ -10,6 +10,8 @@ public class GameManager : Singleton<GameManager>
 
     public string storedSceneToLoad;
     public event Action<Gamemode> ChangeGamemode;
+
+    public GameObject playerModel;
     //This is the game manager. It is very important.
 
     void OnEnable()
@@ -54,6 +56,10 @@ public class GameManager : Singleton<GameManager>
     public void SetStoredScene(string scene)
     {
         storedSceneToLoad = scene;
+    }
+    public void AssignPlayerModel(GameObject model)
+    {
+        playerModel = model;
     }
 
 

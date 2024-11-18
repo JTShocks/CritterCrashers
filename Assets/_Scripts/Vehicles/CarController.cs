@@ -51,6 +51,11 @@ public class CarController : MonoBehaviour
 
 
     }
+
+    void Start()
+    {
+        Instantiate(GameManager.Instance.playerModel, this.transform);
+    }
     void Update()
     {
         transform.position = carRb.transform.position;

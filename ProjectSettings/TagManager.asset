@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Road
   - Racer
+  - OffRoad
   layers:
   - Default
   - TransparentFX

@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &131870311
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1871,7 +1871,7 @@ MonoBehaviour:
         m_MethodName: OnSelectCharacter
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 7670161902616997877, guid: 3f101b9ca204e834eb602b6d7b20956d,
+          m_ObjectArgument: {fileID: 4992751358492583391, guid: e267a113f320c5c45a8ba83791fd3667,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
@@ -2404,7 +2404,7 @@ MonoBehaviour:
         m_MethodName: OnSelectCharacter
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6236902278529274696, guid: b2376d352f12fd645adc085fd4e43a62,
+          m_ObjectArgument: {fileID: 7903194935065593315, guid: 6580fc7205264664590da4eaecfea2b9,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0

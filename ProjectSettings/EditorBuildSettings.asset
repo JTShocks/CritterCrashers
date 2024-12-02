@@ -14,12 +14,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tracks/BeaverWoods.unity
     guid: 11627388a0ce6c3498aa42bb5b2b6dda
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tracks/BeaverWoods_timeAttack.unity
     guid: 51ef820fb44a7fc4c8456793cc9eed17
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: ca8eb387aef915f4a8cc4684baf43d35
+  - enabled: 1
+    path: Assets/Scenes/Tracks/BeaverWoodsTimeAttackMaya.unity
+    guid: 911eeae1a1606ea41901a8666500aa9c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9d74a784f45d82d4a97cf89255788439,
       type: 2}

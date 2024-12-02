@@ -9,6 +9,8 @@ public class Timer : MonoBehaviour
     enum TimerType{Countdown, Stopwatch}
 
     [SerializeField] private TimerType timerType;
+
+    public TMP_Text TimerText => timerText;
     [SerializeField] private float timeToDisplay = 60.0f;
     private bool isRunning;
 

@@ -47,5 +47,10 @@ public class GM_Race : Gamemode
         currentLap++;
         Debug.Log("Current lap is:" + currentLap );
         EventManager.OnLapUpdate(currentLap);
+
+        if(currentLap >= TOTAL_LAPS)
+        {
+            GameWin();
+        }
     }
 }

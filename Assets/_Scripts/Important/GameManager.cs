@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : Singleton<GameManager>
 {
 
     public string storedSceneToLoad;
     public event Action<Gamemode> ChangeGamemode;
+
+    [SerializeField] TextMeshPro resultText;
 
     public GameObject playerModel;
     //This is the game manager. It is very important.
@@ -45,11 +48,9 @@ public class GameManager : Singleton<GameManager>
 
     void OnGameFinish(bool didWin)
     {
-
-        if(!didWin)
-        {
-            ChangeScene("MainMenu");
-        }
+        EventManager.OnTimerStop();
+        StartCoroutine(ShowResults(didWin));
+        ChangeScene("MainMenu");
 
     }
 
@@ -60,6 +61,23 @@ public class GameManager : Singleton<GameManager>
     public void AssignPlayerModel(GameObject model)
     {
         playerModel = model;
+    }
+
+    IEnumerator ShowResults(bool didWin)
+    {
+        //Show the text win or lose
+
+        if(didWin)
+        {
+            resultText.text = "You Win!!!";
+        }
+        else
+        {
+            resultText.text = "You Lose!!!";
+        }
+
+        //Show the final time on the timer
+        yield return new WaitForSeconds(5);
     }
 
 

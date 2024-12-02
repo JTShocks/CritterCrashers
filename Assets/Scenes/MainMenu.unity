@@ -851,8 +851,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1994756466}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1596459286}
+        m_TargetAssemblyTypeName: GamemodeSelector, Assembly-CSharp
         m_MethodName: SetStoredScene
         m_Mode: 5
         m_Arguments:
@@ -1531,6 +1531,7 @@ GameObject:
   - component: {fileID: 654105973}
   - component: {fileID: 654105972}
   - component: {fileID: 654105971}
+  - component: {fileID: 654105974}
   m_Layer: 5
   m_Name: Start!!
   m_TagString: Untagged
@@ -1638,9 +1639,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1994756466}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ChangeScene
+      - m_Target: {fileID: 654105974}
+        m_TargetAssemblyTypeName: StartNewGameButton, Assembly-CSharp
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1688,6 +1689,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654105969}
   m_CullTransparentMesh: 1
+--- !u!114 &654105974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654105969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37cb83c00b156c041ab70ae09e3c31d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &708104201
 GameObject:
   m_ObjectHideFlags: 0
@@ -2392,6 +2405,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1596459285}
+  - component: {fileID: 1596459286}
   m_Layer: 5
   m_Name: SelectGamemode
   m_TagString: Untagged
@@ -2421,6 +2435,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1596459286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596459284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fbac9c2e5288c54b9493d87c2fb0074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1697004350
 GameObject:
   m_ObjectHideFlags: 0
@@ -3145,8 +3171,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1994756466}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1596459286}
+        m_TargetAssemblyTypeName: GamemodeSelector, Assembly-CSharp
         m_MethodName: SetStoredScene
         m_Mode: 5
         m_Arguments:
@@ -3207,18 +3233,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793634587}
   m_CullTransparentMesh: 1
---- !u!114 &1994756466 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5143183945151684954, guid: c96186c5664bf07408957f4b5bae5828,
-    type: 3}
-  m_PrefabInstance: {fileID: 337998975}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ac9a53be79c65d429e5e32f8b94f5a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2090806626
 GameObject:
   m_ObjectHideFlags: 0

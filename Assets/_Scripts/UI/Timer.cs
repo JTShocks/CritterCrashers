@@ -49,7 +49,7 @@ public class Timer : MonoBehaviour
 
         if(timerType == TimerType.Countdown && timeToDisplay < 0.0f)
         {
-            //EventManager.OnTimerStop();
+            EventManager.OnTimerStop();
             return;
         }
 
